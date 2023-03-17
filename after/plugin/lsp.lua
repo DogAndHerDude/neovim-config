@@ -1,7 +1,6 @@
 local null_ls = require('null-ls')
 local prettier = require('prettier')
 local lsp = require('lsp-zero').preset("recommended")
-
 local null_opts = lsp.build_options('null-ls', {
   on_attach = function(client)
     if client.server_capabilities.documentFormattingProvider then
@@ -24,6 +23,14 @@ lsp.ensure_installed({
   "graphql"
 })
 
+lsp.configure('tsserver', {
+  settings = {
+    completions = {
+      completeFunctionCalls = true
+    }
+  }
+})
+
 null_ls.setup({
   on_attach = null_opts.on_attach,
   sources = {
@@ -42,8 +49,6 @@ prettier.setup({
     "scss"
   }
 })
-
--- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus = false})]]
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -84,3 +89,19 @@ end)
 lsp.nvim_workspace()
 
 lsp.setup()
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = 'minimal',
+    border = 'rounded',
+    source = 'always',
+    header = '',
+    prefix = '',
+  },
+})

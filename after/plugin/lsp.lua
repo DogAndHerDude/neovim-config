@@ -7,7 +7,15 @@ local null_opts = lsp.build_options('null-ls', {
       vim.api.nvim_create_autocmd("BufWritePre", {
         desc = "Auto format before save",
         pattern = "<buffer>",
-        callback = vim.lsp.buf.formatting_sync,
+        -- callback = vim.lsp.buf.formatting_sync,
+        callback = function()
+          vim.lsp.buf.format({
+            bufnr = bufnr,
+            filter = function(client)
+              return client.name == "null-ls"
+            end
+          })
+        end,
       })
     end
   end
@@ -16,6 +24,8 @@ local null_opts = lsp.build_options('null-ls', {
 lsp.ensure_installed({
   "html",
   "cssls",
+  "cssmodules_ls",
+  "tailwindcss",
 	"tsserver",
 	"eslint",
 	"rust_analyzer",
@@ -105,3 +115,4 @@ vim.diagnostic.config({
     prefix = '',
   },
 })
+

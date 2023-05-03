@@ -28,9 +28,16 @@ lsp.ensure_installed({
   "tailwindcss",
 	"tsserver",
 	"eslint",
+  "rustfmt",
 	"rust_analyzer",
   "prismals",
-  "graphql"
+  "prettierd",
+  "graphql",
+  "clangd",
+  "elixirls",
+  "jsonls",
+  "zls",
+  "lua_ls"
 })
 
 lsp.configure('tsserver', {
@@ -93,6 +100,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("n", "<leader>r", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set('n', "<leader>f", function() vim.lsp.buf.code_action() end, opts);
 end)
 
 -- (Optional) Configure lua language server for neovim

@@ -21,19 +21,32 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		-- or                          , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		'nvim-telescope/telescope.nvim', branch = '0.1.x',
+		-- or                          , tag  = '0.1.1',
+		requires = {
+      {'nvim-lua/plenary.nvim'},
+    }
+
 	}
 
-	use({
-		'rose-pine/neovim',
-		as = 'rose-pine',
-		config = function()
-			require("rose-pine").setup()
-			vim.cmd('colorscheme rose-pine')
-		end
-	})
+	-- use({
+	--	'rose-pine/neovim',
+	--	as = 'rose-pine',
+	--	config = function()
+	--		require("rose-pine").setup()
+	--		vim.cmd('colorscheme rose-pine')
+	--	end
+	--})
+  use({
+    "rebelot/kanagawa.nvim",
+    as = 'kanagawa',
+    config = function()
+      require('kanagawa').setup({
+        theme = "dragon"
+      })
+      vim.cmd('colorscheme kanagawa-dragon')
+    end
+  })
 	use('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
 	use('nvim-treesitter/playground')
 	use('theprimeagen/harpoon')

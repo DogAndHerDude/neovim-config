@@ -36,17 +36,29 @@ return require('packer').startup(function(use)
 	--		require("rose-pine").setup()
 	--		vim.cmd('colorscheme rose-pine')
 	--	end
-	--})
+	-- })
+  -- use({
+  --  "rebelot/kanagawa.nvim",
+  --  as = 'kanagawa',
+  --  config = function()
+  --    require('kanagawa').setup({
+  --      theme = "dragon"
+  --    })
+  --    vim.cmd('colorscheme kanagawa-dragon')
+  --  end
+  -- })
+
   use({
-    "rebelot/kanagawa.nvim",
-    as = 'kanagawa',
+    'neanias/everforest-nvim',
+    as = 'everforest',
     config = function()
-      require('kanagawa').setup({
-        theme = "dragon"
+      require('everforest').setup({
+        background = 'hard'
       })
-      vim.cmd('colorscheme kanagawa-dragon')
+      vim.cmd('colorscheme everforest')
     end
   })
+
 	use('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
 	use('nvim-treesitter/playground')
 	use('theprimeagen/harpoon')
@@ -80,6 +92,10 @@ return require('packer').startup(function(use)
   use('MunifTanjim/prettier.nvim')
   use('onsails/lspkind.nvim')
   use('windwp/nvim-ts-autotag')
+  use {
+	  "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
   use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
   use({
     "glepnir/lspsaga.nvim",

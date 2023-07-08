@@ -114,6 +114,12 @@ _G.packer_plugins = {
     path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/diffview.nvim",
     url = "https://github.com/sindrets/diffview.nvim"
   },
+  everforest = {
+    config = { "\27LJ\2\n~\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\27colorscheme everforest\bcmd\bvim\1\0\1\15background\thard\nsetup\15everforest\frequire\0" },
+    loaded = true,
+    path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/neanias/everforest-nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -133,12 +139,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
-  },
-  kanagawa = {
-    config = { "\27LJ\2\n~\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0 colorscheme kanagawa-dragon\bcmd\bvim\1\0\1\ntheme\vdragon\nsetup\rkanagawa\frequire\0" },
-    loaded = true,
-    path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/kanagawa",
-    url = "https://github.com/rebelot/kanagawa.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -239,10 +239,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: kanagawa
-time([[Config for kanagawa]], true)
-try_loadstring("\27LJ\2\n~\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0 colorscheme kanagawa-dragon\bcmd\bvim\1\0\1\ntheme\vdragon\nsetup\rkanagawa\frequire\0", "config", "kanagawa")
-time([[Config for kanagawa]], false)
+-- Config for: everforest
+time([[Config for everforest]], true)
+try_loadstring("\27LJ\2\n~\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\27colorscheme everforest\bcmd\bvim\1\0\1\15background\thard\nsetup\15everforest\frequire\0", "config", "everforest")
+time([[Config for everforest]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\flspsaga\frequire\0", "config", "lspsaga.nvim")

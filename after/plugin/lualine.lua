@@ -3,6 +3,7 @@ if (not status) then return end
 
 lualine.setup {
   options = {
+    theme = 'everforest',
     icons_enabled = true,
     theme = 'solarized_dark',
     section_separators = { left = '', right = '' },

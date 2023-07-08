@@ -3,6 +3,7 @@ if (not status) then return end
 
 bufferline.setup({
   options = {
+    theme = 'everforest',
     mode = "tabs",
     separator_style = 'slant',
     always_show_bufferline = false,

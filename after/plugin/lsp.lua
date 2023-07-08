@@ -1,6 +1,7 @@
 local null_ls = require('null-ls')
 local prettier = require('prettier')
 local lsp = require('lsp-zero').preset("recommended")
+local lspconfig = require("lspconfig")
 local null_opts = lsp.build_options('null-ls', {
   on_attach = function(client)
     if client.server_capabilities.documentFormattingProvider then
@@ -35,24 +36,22 @@ lsp.ensure_installed({
   "elixirls",
   "jsonls",
   "zls",
-  "lua_ls"
+  "luau_lsp",
 })
-
 lsp.configure('tsserver', {
   settings = {
     completions = {
-      completeFunctionCalls = true
+      -- completeFunctionCalls = true
     }
   }
 })
-
+lspconfig.tailwindcss.setup {}
 null_ls.setup({
   on_attach = null_opts.on_attach,
   sources = {
     null_ls.builtins.formatting.prettier,
   }
 })
-
 prettier.setup({
   filetypes = {
     "css",

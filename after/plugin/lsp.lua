@@ -37,6 +37,7 @@ lsp.ensure_installed({
   "jsonls",
   "zls",
   "luau_lsp",
+  "sqlls",
 })
 lsp.configure('tsserver', {
   settings = {

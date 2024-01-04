@@ -1,9 +1,10 @@
-require'nvim-treesitter.configs'.setup {
+local treesitter = require('nvim-treesitter.configs')
+
+treesitter.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = {
-    "help",
     "javascript",
-    "typescript", 
+    "typescript",
     "c",
     "lua",
     "vim",
@@ -14,7 +15,13 @@ require'nvim-treesitter.configs'.setup {
     "scss",
     "graphql",
     "css",
-    "cpp"
+    "cpp",
+    "proto",
+    "go",
+    "gomod",
+    "gowork",
+    "gosum",
+    "sql"
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -45,6 +52,10 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
   indent = { enable = true },
+  autotag = { 
+    enable = true,
+    enable_rename = true,
+  },
   incremental_selection = {
     enable = true,
     keymaps = {

@@ -1,19 +1,72 @@
 local lspconfig = require('lspconfig')
 local null_ls = require('null-ls')
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local capabilities = require('cmp_nvim_lsp')
 
-lspconfig.gopls.setup{}
-lspconfig.tsserver.setup {}
-lspconfig.graphql.setup {}
-lspconfig.prismals.setup {}
-lspconfig.tailwindcss.setup {}
-lspconfig.astro.setup {}
+local default_capabilities = capabilities.default_capabilities()
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      require'luasnip'.lsp_expand(args.body)
+    end
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+    { name = 'luasnip' },
+    { name = 'path' },
+  }, {
+    { name = 'buffer' },
+  }),
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+}
+
+lspconfig.gopls.setup{
+  capabilities = default_capabilities,
+  settings = {
+    gopls = {
+      staticcheck = true,
+      gofumpt = true,
+    }
+  }
+}
+lspconfig.tsserver.setup {
+  capabilities = default_capabilities,
+}
+lspconfig.graphql.setup {
+  capabilities = default_capabilities,
+}
+lspconfig.prismals.setup {
+  capabilities = default_capabilities,
+}
+lspconfig.tailwindcss.setup {
+  capabilities = default_capabilities,
+}
+lspconfig.astro.setup {
+  capabilities = default_capabilities,
+}
 lspconfig.rust_analyzer.setup {
+  capabilities = default_capabilities,
   -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
     ['rust-analyzer'] = {},
   },
 }
-lspconfig.lua_ls.setup {}
+lspconfig.lua_ls.setup {
+  capabilities = default_capabilities,
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -44,12 +97,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', 'F', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
+    -- vim.keymap.set('n', '<space>f', function()
+    --   vim.lsp.buf.format { async = true }
+    -- end, opts)
   end,
 })
 
@@ -85,3 +138,4 @@ null_ls.setup({
     end
   end,
 })
+

@@ -23,3 +23,9 @@ autocmd("BufWritePre", {
     vim.lsp.buf.format({async = false})
   end
 })
+
+autocmd("BufWritePre", {
+  pattern = "*.templ",
+  callback = vim.lsp.buf.format,
+})
+

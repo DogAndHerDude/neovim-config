@@ -53,6 +53,8 @@ lspconfig.prismals.setup {
 }
 lspconfig.tailwindcss.setup {
   capabilities = default_capabilities,
+  filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+  init_options = { userLanguages = { templ = "html" } },
 }
 lspconfig.astro.setup {
   capabilities = default_capabilities,
@@ -66,6 +68,32 @@ lspconfig.rust_analyzer.setup {
 }
 lspconfig.lua_ls.setup {
   capabilities = default_capabilities,
+  settings = {
+    Lua ={
+      diagnostics = {
+        globals = {
+          'vim',
+          'require'
+        },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    },
+  }
+}
+lspconfig.html.setup {
+  filetypes = { "html", "templ", "javascript", "typescript", "react", "astro" },
+  capabilities = default_capabilities,
+}
+lspconfig.htmx.setup({
+    capabilities = capabilities,
+    filetypes = { "html", "templ", "astro" },
+})
+lspconfig.templ.setup {
+  capabilities = default_capabilities,
+  filetypes = { "templ" }
 }
 
 -- Global mappings.

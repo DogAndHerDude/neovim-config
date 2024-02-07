@@ -21,7 +21,8 @@ treesitter.setup {
     "gomod",
     "gowork",
     "gosum",
-    "sql"
+    "sql",
+    "html"
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

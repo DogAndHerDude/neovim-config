@@ -24,8 +24,8 @@ autocmd("BufWritePre", {
   end
 })
 
-autocmd("BufWritePre", {
-  pattern = "*.templ",
-  callback = vim.lsp.buf.format,
-})
+-- autocmd("BufWritePre", {
+--   pattern = "*.templ",
+--   callback = vim.lsp.buf.format,
+-- })
 

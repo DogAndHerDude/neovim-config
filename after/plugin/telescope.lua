@@ -1,13 +1,12 @@
 local telescope = require('telescope')
+local builtin = require('telescope.builtin')
+local themes = require('telescope.themes')
 
 telescope.setup {
   defaults = {
     file_ignore_patterns = {"node_modules"}
   }
 }
-
-local builtin = require('telescope.builtin')
-local themes = require('telescope.themes')
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})

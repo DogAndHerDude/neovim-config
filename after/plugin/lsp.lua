@@ -1,7 +1,6 @@
 local lspconfig = require('lspconfig')
 local null_ls = require('null-ls')
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local capabilities = require('cmp_nvim_lsp')
 
 local default_capabilities = capabilities.default_capabilities()
@@ -53,7 +52,6 @@ lspconfig.prismals.setup {
 }
 lspconfig.tailwindcss.setup {
   capabilities = default_capabilities,
-  filetypes = { "templ", "astro", "javascript", "typescript", "react" },
   init_options = { userLanguages = { templ = "html" } },
 }
 lspconfig.astro.setup {
@@ -69,32 +67,28 @@ lspconfig.rust_analyzer.setup {
 lspconfig.lua_ls.setup {
   capabilities = default_capabilities,
   settings = {
-    Lua ={
+    Lua = {
       diagnostics = {
         globals = {
           'vim',
           'require'
         },
       },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
     },
   }
 }
-lspconfig.html.setup {
-  filetypes = { "html", "templ", "javascript", "typescript", "react", "astro" },
-  capabilities = default_capabilities,
-}
-lspconfig.htmx.setup({
-    capabilities = capabilities,
-    filetypes = { "html", "templ", "astro" },
-})
-lspconfig.templ.setup {
-  capabilities = default_capabilities,
-  filetypes = { "templ" }
-}
+-- lspconfig.html.setup {
+--   filetypes = { "html", "templ", "javascript", "typescript", "react", "astro" },
+--   capabilities = default_capabilities,
+-- }
+-- lspconfig.htmx.setup({
+--   capabilities = capabilities,
+--   filetypes = { "html", "templ", "astro" },
+-- })
+-- lspconfig.templ.setup {
+--   capabilities = default_capabilities,
+--   filetypes = { "templ" }
+-- }
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -137,10 +131,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- NULL LS
 
 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-local event = "BufWritePre" 
+local event = "BufWritePre"
 local async = event == "BufWritePost"
 
-null_ls.setup({
+null_ls.setup {
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.keymap.set("n", "<Leader>f", function()
@@ -165,5 +159,5 @@ null_ls.setup({
       end, { buffer = bufnr, desc = "[lsp] format" })
     end
   end,
-})
+}
 

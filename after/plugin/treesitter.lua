@@ -22,7 +22,7 @@ treesitter.setup {
     "gowork",
     "gosum",
     "sql",
-    "html"
+    "templ",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -53,7 +53,7 @@ treesitter.setup {
     additional_vim_regex_highlighting = false,
   },
   indent = { enable = true },
-  autotag = { 
+  autotag = {
     enable = true,
     enable_rename = true,
   },

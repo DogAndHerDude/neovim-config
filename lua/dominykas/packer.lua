@@ -1,15 +1,15 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function (use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
-	use {
-		'nvim-telescope/telescope.nvim', branch = '0.1.x',
-		requires = {
-      {'nvim-lua/plenary.nvim'},
+return require('packer').startup(function(use)
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+  use {
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
     }
-	}
-	use('nvim-treesitter/nvim-treesitter', { run =  ':TSUpdate' })
+  }
+  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use({
     'neanias/everforest-nvim',
     as = 'everforest',
@@ -23,22 +23,22 @@ return require('packer').startup(function (use)
   })
   use('neovim/nvim-lspconfig')
   use('L3MON4D3/LuaSnip')
-	use('hrsh7th/nvim-cmp')
-	use('saadparwaiz1/cmp_luasnip')
-	use('hrsh7th/cmp-nvim-lsp')
-	use('hrsh7th/cmp-buffer')
-	use('hrsh7th/cmp-path')
-	use('rafamadriz/friendly-snippets')
-	use('hrsh7th/cmp-nvim-lua')
+  use('hrsh7th/nvim-cmp')
+  use('saadparwaiz1/cmp_luasnip')
+  use('hrsh7th/cmp-nvim-lsp')
+  use('hrsh7th/cmp-buffer')
+  use('hrsh7th/cmp-path')
+  use('rafamadriz/friendly-snippets')
+  use('hrsh7th/cmp-nvim-lua')
   use('nvim-lualine/lualine.nvim')
-  use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
   use('williamboman/mason.nvim')
   use('onsails/lspkind.nvim')
-  use({'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'})
-	use('tpope/vim-fugitive')
+  use({ 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' })
+  use('tpope/vim-fugitive')
   use('dinhhuy258/git.nvim')
   use('windwp/nvim-ts-autotag')
   use('lewis6991/gitsigns.nvim')
   use('nvim-tree/nvim-web-devicons')
+  use('stevearc/conform.nvim')
 end)

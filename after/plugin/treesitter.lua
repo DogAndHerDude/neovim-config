@@ -23,6 +23,7 @@ treesitter.setup {
     "gosum",
     "sql",
     "templ",
+    "html"
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

@@ -4,7 +4,7 @@ local themes = require('telescope.themes')
 
 telescope.setup {
   defaults = {
-    file_ignore_patterns = {"node_modules"}
+    file_ignore_patterns = { "node_modules" }
   }
 }
 
@@ -16,6 +16,7 @@ vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]re
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set("n", "<space>gr", builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   builtin.current_buffer_fuzzy_find(themes.get_dropdown {

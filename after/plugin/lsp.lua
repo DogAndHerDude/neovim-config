@@ -8,7 +8,7 @@ local default_capabilities = capabilities.default_capabilities()
 cmp.setup {
   snippet = {
     expand = function(args)
-      require'luasnip'.lsp_expand(args.body)
+      require 'luasnip'.lsp_expand(args.body)
     end
   },
   sources = cmp.config.sources({
@@ -32,7 +32,7 @@ cmp.setup {
   }),
 }
 
-lspconfig.gopls.setup{
+lspconfig.gopls.setup {
   capabilities = default_capabilities,
   settings = {
     gopls = {
@@ -77,18 +77,16 @@ lspconfig.lua_ls.setup {
     },
   }
 }
--- lspconfig.html.setup {
---   filetypes = { "html", "templ", "javascript", "typescript", "react", "astro" },
---   capabilities = default_capabilities,
--- }
--- lspconfig.htmx.setup({
---   capabilities = capabilities,
---   filetypes = { "html", "templ", "astro" },
--- })
--- lspconfig.templ.setup {
---   capabilities = default_capabilities,
---   filetypes = { "templ" }
--- }
+lspconfig.html.setup {
+  capabilities = default_capabilities,
+}
+lspconfig.htmx.setup {
+  capabilities = capabilities,
+}
+lspconfig.templ.setup {
+  capabilities = default_capabilities,
+  filetypes = { "templ" }
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -127,37 +125,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
-
--- NULL LS
-
-local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-local event = "BufWritePre"
-local async = event == "BufWritePost"
-
-null_ls.setup {
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("n", "<Leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-
-      -- format on save
-      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-      vim.api.nvim_create_autocmd(event, {
-        buffer = bufnr,
-        group = group,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr, async = async })
-        end,
-        desc = "[lsp] format on save",
-      })
-    end
-
-    if client.supports_method("textDocument/rangeFormatting") then
-      vim.keymap.set("x", "<Leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-    end
-  end,
-}
-

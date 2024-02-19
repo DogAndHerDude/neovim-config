@@ -1,5 +1,4 @@
 local lspconfig = require('lspconfig')
-local null_ls = require('null-ls')
 local cmp = require('cmp')
 local capabilities = require('cmp_nvim_lsp')
 

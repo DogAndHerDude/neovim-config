@@ -31,6 +31,15 @@ cmp.setup {
   }),
 }
 
+lspconfig.eslint.setup({
+  --- ...
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
 lspconfig.gopls.setup {
   capabilities = default_capabilities,
   settings = {
@@ -86,6 +95,7 @@ lspconfig.templ.setup {
   capabilities = default_capabilities,
   filetypes = { "templ" }
 }
+lspconfig.sqls.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

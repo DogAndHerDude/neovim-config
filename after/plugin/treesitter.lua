@@ -20,6 +20,7 @@ treesitter.setup {
     "go",
     "gomod",
     "gowork",
+    "gotmpl",
     "gosum",
     "sql",
     "templ",

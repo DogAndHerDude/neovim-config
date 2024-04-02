@@ -24,7 +24,10 @@ treesitter.setup {
     "gosum",
     "sql",
     "templ",
-    "html"
+    "html",
+    "make",
+    "vim",
+    "vimdoc",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

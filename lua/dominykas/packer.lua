@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
       { 'nvim-lua/plenary.nvim' },
     }
   }
-  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate', lazy = false })
   use({
     'neanias/everforest-nvim',
     as = 'everforest',

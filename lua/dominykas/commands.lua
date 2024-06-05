@@ -10,12 +10,12 @@ local function jsq_command()
   local str = table.concat(possible_json, "\n")
 
   if #str == 0 then
-    print("Buffer is empty")
+    vim.api.nvim_echo({ { "Buffer empty", "WarningMsg" } }, true, {})
     return
   end
 
   if string.match(str, "^%{.*%}$") == nil then
-    print("Buffer malformed")
+    vim.api.nvim_echo({ { "Buffer malformed", "WarningMsg" } }, true, {})
     return
   end
 

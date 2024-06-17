@@ -7,4 +7,5 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- custom commands
-vim.keymap.set("n", "<leader>jq", function() my_commands.jsq() end)
+vim.keymap.set("n", "<leader>jsq", function() my_commands.jsq() end)
+vim.keymap.set("n", "<leader>jq", function() my_commands.jq() end)

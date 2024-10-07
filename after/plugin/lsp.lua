@@ -95,7 +95,7 @@ lspconfig.templ.setup {
   capabilities = default_capabilities,
   filetypes = { "templ" }
 }
-lspconfig.sqls.setup {}
+
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

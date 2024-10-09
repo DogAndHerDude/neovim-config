@@ -32,7 +32,6 @@ cmp.setup {
 }
 
 lspconfig.eslint.setup({
-  --- ...
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
@@ -49,9 +48,7 @@ lspconfig.gopls.setup {
     }
   }
 }
-lspconfig.tsserver.setup {
-  capabilities = default_capabilities,
-}
+lspconfig.ts_ls.setup {}
 lspconfig.graphql.setup {
   capabilities = default_capabilities,
 }
@@ -88,9 +85,10 @@ lspconfig.lua_ls.setup {
 lspconfig.html.setup {
   capabilities = default_capabilities,
 }
-lspconfig.htmx.setup {
-  capabilities = capabilities,
-}
+--It's dead, Jimbo...
+--lspconfig.htmx.setup {
+--  capabilities = capabilities,
+--}
 lspconfig.templ.setup {
   capabilities = default_capabilities,
   filetypes = { "templ" }

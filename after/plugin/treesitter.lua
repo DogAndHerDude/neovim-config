@@ -8,7 +8,6 @@ treesitter.setup {
     "c",
     "lua",
     "vim",
-    "help",
     "query",
     "prisma",
     "rust",

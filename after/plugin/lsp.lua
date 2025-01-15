@@ -93,11 +93,12 @@ lspconfig.templ.setup {
   capabilities = default_capabilities,
   filetypes = { "templ" }
 }
-lspconfig.sqls.setup {
-  on_attach = function(client, bufnr)
-    require('sqls').on_attach(client, bufnr)
-  end
-}
+-- it borken
+--lspconfig.sqls.setup {
+--  on_attach = function(client, bufnr)
+--    require('sqls').on_attach(client, bufnr)
+--  end
+--}
 
 
 -- Global mappings.

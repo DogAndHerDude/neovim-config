@@ -1,4 +1,3 @@
-local lspconfig = require('lspconfig')
 local cmp = require('cmp')
 local capabilities = require('cmp_nvim_lsp')
 
@@ -31,7 +30,7 @@ cmp.setup {
   }),
 }
 
-lspconfig.eslint.setup({
+vim.lsp.config('eslint', {
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
@@ -39,7 +38,7 @@ lspconfig.eslint.setup({
     })
   end,
 })
-lspconfig.gopls.setup {
+vim.lsp.config('gopls', {
   capabilities = default_capabilities,
   settings = {
     gopls = {
@@ -47,29 +46,36 @@ lspconfig.gopls.setup {
       gofumpt = true,
     }
   }
-}
-lspconfig.ts_ls.setup {}
-lspconfig.graphql.setup {
+})
+
+vim.lsp.config('ts_ls', {})
+vim.lsp.enable('ts_ls')
+vim.lsp.config('graphql', {
   capabilities = default_capabilities,
-}
-lspconfig.prismals.setup {
+})
+vim.lsp.enable('graphql')
+vim.lsp.config('prismals', {
   capabilities = default_capabilities,
-}
-lspconfig.tailwindcss.setup {
+})
+vim.lsp.enable('prismals')
+vim.lsp.config('tailwindcss', {
   capabilities = default_capabilities,
   init_options = { userLanguages = { templ = "html" } },
-}
-lspconfig.astro.setup {
+})
+vim.lsp.enable('tailwindcss')
+vim.lsp.config('astro', {
   capabilities = default_capabilities,
-}
-lspconfig.rust_analyzer.setup {
+})
+vim.lsp.enable('astro')
+vim.lsp.config('rust_analyzer', {
   capabilities = default_capabilities,
-  -- Server-specific settings. See `:help lspconfig-setup`
+  -- Server-specific settings. See `:help vim.lsp.config-setup`
   settings = {
     ['rust-analyzer'] = {},
   },
-}
-lspconfig.lua_ls.setup {
+})
+vim.lsp.enable('rust_analyzer')
+vim.lsp.config('lua_ls', {
   capabilities = default_capabilities,
   settings = {
     Lua = {
@@ -81,20 +87,26 @@ lspconfig.lua_ls.setup {
       },
     },
   }
-}
-lspconfig.html.setup {
+})
+vim.lsp.enable('lua_ls')
+
+vim.lsp.config('html', {
   capabilities = default_capabilities,
-}
+})
+vim.lsp.enable('html')
 --It's dead, Jimbo...
---lspconfig.htmx.setup {
+--vim.lsp.config.htmx.setup {
 --  capabilities = capabilities,
 --}
-lspconfig.templ.setup {
+
+vim.lsp.config('templ', {
   capabilities = default_capabilities,
   filetypes = { "templ" }
-}
+})
+vim.lsp.enable('templ')
+
 -- it borken
---lspconfig.sqls.setup {
+--vim.lsp.config.sqls.setup {
 --  on_attach = function(client, bufnr)
 --    require('sqls').on_attach(client, bufnr)
 --  end

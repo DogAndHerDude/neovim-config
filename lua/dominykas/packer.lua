@@ -42,4 +42,10 @@ return require('packer').startup(function(use)
   use('nvim-tree/nvim-web-devicons')
   use('stevearc/conform.nvim')
   use("xemptuous/sqlua.nvim")
+  use("devswiftzone/swift.nvim", {
+    ft = "swift",
+    config = function()
+      require("swift").setup()
+    end,
+  })
 end)

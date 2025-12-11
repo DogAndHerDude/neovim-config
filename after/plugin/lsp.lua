@@ -104,6 +104,27 @@ vim.lsp.config('templ', {
   filetypes = { "templ" }
 })
 vim.lsp.enable('templ')
+vim.lsp.config('sourcekit', {
+  cmd = { "xcrun", "sourcekit-lsp" },
+
+  filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" },
+
+  root_markers = { "Package.swift", ".git" },
+
+  capabilities = {
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    },
+  },
+
+  on_attach = function(client, bufnr)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { noremap = true, silent = true })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })
+  end,
+})
+vim.lsp.enable('sourcekit')
 
 -- it borken
 --vim.lsp.config.sqls.setup {

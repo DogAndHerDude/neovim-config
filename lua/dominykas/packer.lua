@@ -45,7 +45,10 @@ return require('packer').startup(function(use)
   use("devswiftzone/swift.nvim", {
     ft = "swift",
     config = function()
-      require("swift").setup()
+      require("swift").setup({
+        format_on_save = true,
+        tool = "swift-format",
+      })
     end,
   })
 end)

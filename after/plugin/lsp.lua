@@ -47,6 +47,7 @@ vim.lsp.config('gopls', {
     }
   }
 })
+vim.lsp.enable('gopls')
 
 vim.lsp.config('ts_ls', {})
 vim.lsp.enable('ts_ls')

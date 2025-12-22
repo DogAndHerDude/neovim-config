@@ -105,20 +105,47 @@ vim.lsp.config('templ', {
   filetypes = { "templ" }
 })
 vim.lsp.enable('templ')
+
+vim.lsp.config('ansible-lint', {
+  capabilities = default_capabilities,
+  ansible = {
+    ansible = {
+      path = "ansible"
+    },
+    executionEnvironment = {
+      enabled = false
+    },
+    python = {
+      interpreterPath = "python"
+    },
+    validation = {
+      enabled = true,
+      lint = {
+        enabled = true,
+        path = "ansible-lint"
+      }
+    }
+  }
+})
+vim.lsp.enable('ansible-lint')
+
+vim.lsp.enable('ansiblels')
+
 vim.lsp.config('sourcekit', {
   cmd = { "xcrun", "sourcekit-lsp" },
 
   filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" },
 
-  root_markers = { "Package.swift", ".git" },
+  root_markers = { "buildServer.json", "*.xcodeproj", ".git" },
 
-  capabilities = {
-    workspace = {
-      didChangeWatchedFiles = {
-        dynamicRegistration = true,
-      },
-    },
-  },
+  capabilities = default_capabilities,
+  --capabilities = {
+  --  workspace = {
+  --    didChangeWatchedFiles = {
+  --      dynamicRegistration = true,
+  --    },
+  --  },
+  --},
 
   on_attach = function(client, bufnr)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { noremap = true, silent = true })
@@ -126,6 +153,14 @@ vim.lsp.config('sourcekit', {
   end,
 })
 vim.lsp.enable('sourcekit')
+
+vim.lsp.config('zls', {
+  cmd = { "zls" },
+  filetypes = { "zig", "zir" },
+  root_markers = { "build.zig", ".git" },
+  single_file_support = true,
+})
+vim.lsp.enable('zls')
 
 -- it borken
 --vim.lsp.config.sqls.setup {

@@ -25,8 +25,10 @@ treesitter.setup {
     "templ",
     "html",
     "make",
+    "swift",
     "vim",
     "vimdoc",
+    "zig",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

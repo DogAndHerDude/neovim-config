@@ -159,6 +159,7 @@ vim.lsp.config('zls', {
   filetypes = { "zig", "zir" },
   root_markers = { "build.zig", ".git" },
   single_file_support = true,
+  capabilities = default_capabilities,
 })
 vim.lsp.enable('zls')
 

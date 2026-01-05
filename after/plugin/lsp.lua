@@ -160,6 +160,14 @@ vim.lsp.config('zls', {
   root_markers = { "build.zig", ".git" },
   single_file_support = true,
   capabilities = default_capabilities,
+  settings = {
+    zls = {
+      zig_exe_path = "/opt/homebrew/bin/zig",
+      warn_style = true,
+      highlight_global_var_declarations = true,
+      build_on_save = true,
+    }
+  },
 })
 vim.lsp.enable('zls')
 

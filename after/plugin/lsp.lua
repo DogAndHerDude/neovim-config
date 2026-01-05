@@ -38,6 +38,8 @@ vim.lsp.config('eslint', {
     })
   end,
 })
+vim.lsp.enable('eslint')
+
 vim.lsp.config('gopls', {
   capabilities = default_capabilities,
   settings = {

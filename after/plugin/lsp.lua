@@ -34,7 +34,18 @@ vim.lsp.config('eslint', {
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
-      command = "EslintFixAll",
+      callback = function()
+        -- This is the code that 'EslintFixAll' executes under the hood
+        vim.lsp.buf.execute_command({
+          command = 'eslint.applyAllFixes',
+          arguments = {
+            {
+              uri = vim.uri_from_bufnr(bufnr),
+              version = vim.lsp.util.buf_versions[bufnr],
+            },
+          },
+        })
+      end,
     })
   end,
 })

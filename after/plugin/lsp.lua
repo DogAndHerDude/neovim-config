@@ -72,10 +72,6 @@ vim.lsp.config('prismals', {
   capabilities = default_capabilities,
 })
 vim.lsp.enable('prismals')
-vim.lsp.config('tailwindcss', {
-  capabilities = default_capabilities,
-  init_options = { userLanguages = { templ = "html" } },
-})
 vim.lsp.enable('tailwindcss')
 vim.lsp.config('astro', {
   capabilities = default_capabilities,

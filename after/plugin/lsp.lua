@@ -180,6 +180,8 @@ vim.lsp.config('zls', {
 })
 vim.lsp.enable('zls')
 
+vim.lsp.enable('kotlin_language_server')
+
 -- it borken
 --vim.lsp.config.sqls.setup {
 --  on_attach = function(client, bufnr)

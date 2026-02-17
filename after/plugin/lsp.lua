@@ -73,9 +73,6 @@ vim.lsp.config('prismals', {
 })
 vim.lsp.enable('prismals')
 vim.lsp.enable('tailwindcss')
-vim.lsp.config('astro', {
-  capabilities = default_capabilities,
-})
 vim.lsp.enable('astro')
 vim.lsp.config('rust_analyzer', {
   capabilities = default_capabilities,
@@ -180,6 +177,11 @@ vim.lsp.config('zls', {
 })
 vim.lsp.enable('zls')
 
+vim.lsp.config('kotlin_language_server', {
+  cmd = { "kotlin-language-server" },
+  filetypes = { "kotlin" },
+  root_markers = { "settings.gradle", "settings.gradle.kts", "build.xml", "pom.xml", "build.gradle", "build.gradle.kts" },
+})
 vim.lsp.enable('kotlin_language_server')
 
 -- it borken

@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1764593432/share/lua/5.1/?.lua;/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1764593432/share/lua/5.1/?/init.lua;/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1764593432/lib/luarocks/rocks-5.1/?.lua;/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1764593432/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1764593432/lib/lua/5.1/?.so"
+local package_path_str = "/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1765228720/share/lua/5.1/?.lua;/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1765228720/share/lua/5.1/?/init.lua;/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1765228720/lib/luarocks/rocks-5.1/?.lua;/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1765228720/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/dominykasbartkus/.cache/nvim/packer_hererocks/2.1.1765228720/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -109,13 +109,19 @@ _G.packer_plugins = {
     path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["codecompanion.nvim"] = {
+    config = { "\27LJ\2\nê\1\0\0\5\0\a\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\5\0005\4\4\0=\4\6\3D\0\3\0\rdefaults\1\0\1\rdefaults\0\1\0\1\16auth_method\19oauth-personal\15gemini_cli\vextend\27codecompanion.adapters\frequire£\2\1\0\5\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0003\4\3\0=\4\5\3=\3\a\0025\3\t\0005\4\b\0=\4\n\0035\4\v\0=\4\f\0035\4\r\0=\4\14\3=\3\15\2B\0\2\1K\0\1\0\15strategies\nagent\1\0\1\fadapter\15gemini_cli\vinline\1\0\1\fadapter\15gemini_cli\tchat\1\0\3\vinline\0\nagent\0\tchat\0\1\0\1\fadapter\15gemini_cli\radapters\1\0\2\radapters\0\15strategies\0\15gemini_cli\1\0\1\15gemini_cli\0\0\nsetup\18codecompanion\frequire\0" },
+    loaded = true,
+    path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/codecompanion.nvim",
+    url = "https://github.com/olimorris/codecompanion.nvim"
+  },
   ["conform.nvim"] = {
     loaded = true,
     path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/conform.nvim",
     url = "https://github.com/stevearc/conform.nvim"
   },
   everforest = {
-    config = { "\27LJ\2\nù\1\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\27colorscheme everforest\bcmd\bvim\1\0\2\15background\thard!transparent_background_level\3\0\nsetup\15everforest\frequire\0" },
+    config = { "\27LJ\2\nù\1\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\27colorscheme everforest\bcmd\bvim\1\0\2!transparent_background_level\3\0\15background\thard\nsetup\15everforest\frequire\0" },
     loaded = true,
     path = "/Users/dominykasbartkus/.local/share/nvim/site/pack/packer/start/everforest",
     url = "https://github.com/neanias/everforest-nvim"
@@ -213,9 +219,13 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: codecompanion.nvim
+time([[Config for codecompanion.nvim]], true)
+try_loadstring("\27LJ\2\nê\1\0\0\5\0\a\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\5\0005\4\4\0=\4\6\3D\0\3\0\rdefaults\1\0\1\rdefaults\0\1\0\1\16auth_method\19oauth-personal\15gemini_cli\vextend\27codecompanion.adapters\frequire£\2\1\0\5\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0003\4\3\0=\4\5\3=\3\a\0025\3\t\0005\4\b\0=\4\n\0035\4\v\0=\4\f\0035\4\r\0=\4\14\3=\3\15\2B\0\2\1K\0\1\0\15strategies\nagent\1\0\1\fadapter\15gemini_cli\vinline\1\0\1\fadapter\15gemini_cli\tchat\1\0\3\vinline\0\nagent\0\tchat\0\1\0\1\fadapter\15gemini_cli\radapters\1\0\2\radapters\0\15strategies\0\15gemini_cli\1\0\1\15gemini_cli\0\0\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
+time([[Config for codecompanion.nvim]], false)
 -- Config for: everforest
 time([[Config for everforest]], true)
-try_loadstring("\27LJ\2\nù\1\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\27colorscheme everforest\bcmd\bvim\1\0\2\15background\thard!transparent_background_level\3\0\nsetup\15everforest\frequire\0", "config", "everforest")
+try_loadstring("\27LJ\2\nù\1\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\27colorscheme everforest\bcmd\bvim\1\0\2!transparent_background_level\3\0\15background\thard\nsetup\15everforest\frequire\0", "config", "everforest")
 time([[Config for everforest]], false)
 
 _G._packer.inside_compile = false

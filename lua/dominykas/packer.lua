@@ -51,4 +51,26 @@ return require('packer').startup(function(use)
       })
     end,
   })
+  use({
+    "olimorris/codecompanion.nvim",
+    lazy = false,
+    config = function()
+      require("codecompanion").setup({
+        adapters = {
+          gemini_cli = function()
+            return require("codecompanion.adapters").extend("gemini_cli", {
+              defaults = {
+                auth_method = "oauth-personal",
+              },
+            })
+          end,
+        },
+        strategies = {
+          chat = { adapter = "gemini_cli" },
+          inline = { adapter = "gemini_cli" },
+          agent = { adapter = "gemini_cli" },
+        },
+      })
+    end,
+  })
 end)

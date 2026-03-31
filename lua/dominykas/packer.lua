@@ -37,7 +37,13 @@ return require('packer').startup(function(use)
   use({ 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' })
   use('tpope/vim-fugitive')
   use('dinhhuy258/git.nvim')
-  use('windwp/nvim-ts-autotag')
+  use({
+    'windwp/nvim-ts-autotag',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end
+  })
   use('lewis6991/gitsigns.nvim')
   use('nvim-tree/nvim-web-devicons')
   use('stevearc/conform.nvim')

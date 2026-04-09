@@ -66,7 +66,22 @@ vim.lsp.config('gopls', {
 vim.lsp.enable('gopls')
 
 vim.lsp.config('ts_ls', {})
+--vim.api.nvim_create_autocmd('LspAttach', {
+--  callback = function(args)
+--    local client = vim.lsp.get_client_by_id(args.data.client_id)
+--    if client and client.name == 'ts_ls' then
+--      client.server_capabilities.semanticTokensProvider = nil
+--    end
+--  end,
+--})
+--vim.api.nvim_create_autocmd('FileType', {
+--  pattern = { 'typescript', 'typescriptreact' },
+--  callback = function()
+--    vim.bo.syntax = ''
+--  end,
+--})
 vim.lsp.enable('ts_ls')
+
 vim.lsp.config('graphql', {
   capabilities = default_capabilities,
 })

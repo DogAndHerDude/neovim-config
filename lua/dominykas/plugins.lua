@@ -7,6 +7,7 @@ vim.pack.add({
   { src = 'https://github.com/nvim-telescope/telescope.nvim' },
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
   { src = 'https://github.com/neanias/everforest-nvim' },
+  { src = 'https://github.com/rebelot/kanagawa.nvim' },
   { src = 'https://github.com/L3MON4D3/LuaSnip' },
   { src = 'https://github.com/hrsh7th/nvim-cmp' },
   { src = 'https://github.com/saadparwaiz1/cmp_luasnip' },
@@ -35,6 +36,32 @@ require('everforest').setup({
   transparent_background_level = 0,
 })
 vim.cmd('colorscheme everforest')
+-- Annoying typescript methods not being highlighted... Thanks treesitter & ts_ls...
+vim.api.nvim_set_hl(0, '@lsp.type.member.typescript', { link = '@function' })
+
+--require('kanagawa').setup({})
+--vim.cmd('colorscheme kanagawa')
+
+local treesitter = require('nvim-treesitter')
+
+treesitter.install {
+  "astro", "javascript", "typescript", "c", "lua", "vim", "query",
+  "prisma", "rust", "scss", "graphql", "css", "cpp", "proto", "go",
+  "gomod", "gowork", "gotmpl", "gosum", "sql", "templ", "html",
+  "make", "swift", "vimdoc", "zig",
+}
+
+treesitter.setup {
+  highlight = {
+    enable = true,
+  },
+  auto_install = true,
+  indent = { enable = true },
+  autotag = {
+    enable = true,
+    enable_rename = true,
+  },
+}
 
 require('nvim-ts-autotag').setup()
 

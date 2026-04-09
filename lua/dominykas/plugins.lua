@@ -4,8 +4,8 @@ vim.pack.add({
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = 'https://github.com/folke/snacks.nvim' },
 
-  { src = 'https://github.com/nvim-telescope/telescope.nvim',  version = '0.1.8' },
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+  { src = 'https://github.com/nvim-telescope/telescope.nvim' },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
   { src = 'https://github.com/neanias/everforest-nvim' },
   { src = 'https://github.com/L3MON4D3/LuaSnip' },
   { src = 'https://github.com/hrsh7th/nvim-cmp' },
@@ -66,3 +66,5 @@ vim.api.nvim_create_autocmd('FileType', {
       { desc = 'Add file', buffer = ev.buf })
   end,
 })
+
+vim.opt.hlsearch = true

@@ -4,8 +4,11 @@ local themes = require('telescope.themes')
 
 telescope.setup {
   defaults = {
-    file_ignore_patterns = { "node_modules" }
-  }
+    file_ignore_patterns = { "node_modules" },
+    preview = {
+      treesitter = false,
+    }
+  },
 }
 
 vim.keymap.set('n', '<leader>pf', function() return builtin.find_files({ hidden = true }) end, {})
@@ -18,10 +21,11 @@ vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently o
 vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set("n", "<space>gr", builtin.lsp_references, {})
 vim.keymap.set("n", "<space>gd", builtin.lsp_definitions, {})
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(themes.get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
+--vim.keymap.set('n', '<leader>/', function()
+--  -- You can pass additional configuration to telescope to change theme, layout, etc.
+--  builtin.current_buffer_fuzzy_find(themes.get_dropdown {
+--    winblend = 10,
+--    previewer = false,
+--    treesitter = false,
+--  })
+--end, { desc = '[/] Fuzzily search in current buffer' })

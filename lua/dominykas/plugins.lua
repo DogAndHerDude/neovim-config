@@ -65,7 +65,7 @@ treesitter.install {
   "astro", "javascript", "typescript", "tsx", "c", "lua", "vim", "query",
   "prisma", "rust", "scss", "graphql", "css", "cpp", "proto", "go",
   "gomod", "gowork", "gotmpl", "gosum", "sql", "templ", "html",
-  "make", "swift", "vimdoc", "zig", "markdown", "markdown_inline"
+  "make", "swift", "vimdoc", "zig", "markdown", "markdown_inline", "json"
 }
 
 -- Enable treesitter highlighting

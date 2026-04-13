@@ -5,7 +5,10 @@ vim.pack.add({
   { src = 'https://github.com/folke/snacks.nvim' },
 
   { src = 'https://github.com/nvim-telescope/telescope.nvim' },
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+  {
+    src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+    version = 'main',
+  },
   { src = 'https://github.com/neanias/everforest-nvim' },
   { src = 'https://github.com/rebelot/kanagawa.nvim' },
   { src = 'https://github.com/L3MON4D3/LuaSnip' },
@@ -37,22 +40,26 @@ require('everforest').setup({
 })
 vim.cmd('colorscheme everforest')
 -- Annoying typescript methods not being highlighted... Thanks treesitter & ts_ls...
-vim.api.nvim_create_autocmd('ColorScheme', {
-  callback = function()
-    vim.api.nvim_set_hl(0, '@lsp.type.member.typescript', { link = '@function' })
-  end,
-})
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'typescript', 'typescriptreact' },
-  callback = function()
-    vim.api.nvim_set_hl(0, 'typescriptBraces', {})
-  end,
-})
+--vim.api.nvim_create_autocmd('ColorScheme', {
+--  callback = function()
+--    vim.api.nvim_set_hl(0, '@lsp.type.member.typescript', { link = '@function' })
+--  end,
+--})
+--vim.api.nvim_create_autocmd('FileType', {
+--  pattern = { 'typescript', 'typescriptreact' },
+--  callback = function()
+--    vim.api.nvim_set_hl(0, 'typescriptBraces', {})
+--  end,
+--})
 
 --require('kanagawa').setup({})
 --vim.cmd('colorscheme kanagawa')
 
 local treesitter = require('nvim-treesitter')
+
+treesitter.setup({
+  install_dir = vim.fn.stdpath('data') .. '/site'
+})
 
 treesitter.install {
   "astro", "javascript", "typescript", "tsx", "c", "lua", "vim", "query",
@@ -61,17 +68,40 @@ treesitter.install {
   "make", "swift", "vimdoc", "zig", "markdown", "markdown_inline"
 }
 
-treesitter.setup {
-  highlight = {
-    enable = true,
-  },
-  auto_install = true,
-  indent = { enable = true },
-  autotag = {
-    enable = true,
-    enable_rename = true,
-  },
-}
+-- Enable treesitter highlighting
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
+-- Enable treesitter indentation
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
+
+-- Enable treesitter folding
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo[0][0].foldmethod = 'expr'
+    vim.wo[0][0].foldlevel = 99 -- start with all folds open
+  end,
+})
+
+--treesitter.setup {
+--  highlight = {
+--    enable = true,
+--  },
+--  auto_install = true,
+--  indent = { enable = true },
+--  autotag = {
+--    enable = true,
+--    enable_rename = true,
+--  },
+--}
 
 require('nvim-ts-autotag').setup()
 

@@ -37,7 +37,17 @@ require('everforest').setup({
 })
 vim.cmd('colorscheme everforest')
 -- Annoying typescript methods not being highlighted... Thanks treesitter & ts_ls...
-vim.api.nvim_set_hl(0, '@lsp.type.member.typescript', { link = '@function' })
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    vim.api.nvim_set_hl(0, '@lsp.type.member.typescript', { link = '@function' })
+  end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'typescript', 'typescriptreact' },
+  callback = function()
+    vim.api.nvim_set_hl(0, 'typescriptBraces', {})
+  end,
+})
 
 --require('kanagawa').setup({})
 --vim.cmd('colorscheme kanagawa')
@@ -45,10 +55,10 @@ vim.api.nvim_set_hl(0, '@lsp.type.member.typescript', { link = '@function' })
 local treesitter = require('nvim-treesitter')
 
 treesitter.install {
-  "astro", "javascript", "typescript", "c", "lua", "vim", "query",
+  "astro", "javascript", "typescript", "tsx", "c", "lua", "vim", "query",
   "prisma", "rust", "scss", "graphql", "css", "cpp", "proto", "go",
   "gomod", "gowork", "gotmpl", "gosum", "sql", "templ", "html",
-  "make", "swift", "vimdoc", "zig",
+  "make", "swift", "vimdoc", "zig", "markdown", "markdown_inline"
 }
 
 treesitter.setup {

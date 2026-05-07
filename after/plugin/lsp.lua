@@ -198,7 +198,29 @@ vim.lsp.enable('zls')
 vim.lsp.config('kotlin_language_server', {
   cmd = { "kotlin-language-server" },
   filetypes = { "kotlin" },
-  root_markers = { "settings.gradle", "settings.gradle.kts", "build.xml", "pom.xml", "build.gradle", "build.gradle.kts" },
+  root_markers = {
+    "settings.gradle",
+    "settings.gradle.kts",
+    "build.xml",
+    "pom.xml",
+    "build.gradle",
+    "build.gradle.kts"
+  },
+  init_options = {
+    storagePath = vim.fn.stdpath("data") .. "/kotlin-language-server",
+  },
+  settings = {
+    kotlin = {
+      compiler = {
+        jvm = {
+          target = "default"
+        }
+      },
+      linting = {
+        debounceTime = 500
+      }
+    }
+  },
 })
 vim.lsp.enable('kotlin_language_server')
 

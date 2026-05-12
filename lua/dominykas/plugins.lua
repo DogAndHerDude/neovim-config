@@ -66,7 +66,7 @@ treesitter.install {
   "prisma", "rust", "scss", "graphql", "css", "cpp", "proto", "go",
   "gomod", "gowork", "gotmpl", "gosum", "sql", "templ", "html",
   "make", "swift", "vimdoc", "zig", "markdown", "markdown_inline", "json",
-  "xml", "kotlin"
+  "xml", "kotlin", "bash"
 }
 
 -- Enable treesitter highlighting

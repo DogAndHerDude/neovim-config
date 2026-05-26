@@ -56,7 +56,7 @@ vim.lsp.config('gopls', {
   settings = {
     gopls = {
       staticcheck = true,
-      gofumpt = true,
+      --gofumpt = true,
       env = {
         GOFUMPT_SPLIT_LONG_LINES = "on",
       },

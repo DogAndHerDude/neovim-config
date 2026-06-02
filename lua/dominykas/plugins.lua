@@ -1,5 +1,6 @@
 -- Dependencies must be listed before their dependents
 vim.pack.add({
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/folke/snacks.nvim" },
@@ -30,7 +31,7 @@ vim.pack.add({
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/xemptuous/sqlua.nvim" },
-	{ src = "https://github.com/devswiftzone/swift.nvim" },
+	--{ src = "https://github.com/devswiftzone/swift.nvim" },
 	{ src = "https://github.com/coder/claudecode.nvim" },
 	{ src = "https://github.com/tpope/vim-fugitive" },
 })
@@ -136,14 +137,14 @@ vim.api.nvim_create_autocmd("FileType", {
 
 require("nvim-ts-autotag").setup()
 
-local swift_lsp = require("swift.features.lsp")
-swift_lsp.lsp_setup_done = true
-
-require("swift").setup({
-	format_on_save = true,
-	tool = "swift-format",
-	lsp = { enabled = false },
-})
+--local swift_lsp = require("swift.features.lsp")
+--swift_lsp.lsp_setup_done = true
+--
+--require("swift").setup({
+--	format_on_save = true,
+--	tool = "swift-format",
+--	lsp = { enabled = false },
+--})
 
 require("claudecode").setup()
 

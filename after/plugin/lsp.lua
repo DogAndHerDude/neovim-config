@@ -1,7 +1,8 @@
 local cmp = require("cmp")
 local capabilities = require("cmp_nvim_lsp")
 
-local default_capabilities = capabilities.default_capabilities()
+--local default_capabilities = capabilities.default_capabilities()
+local default_capabilities = vim.lsp.protocol.make_client_capabilities()
 
 cmp.setup({
 	snippet = {
@@ -176,20 +177,24 @@ vim.lsp.config("sourcekit", {
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true })
 	end,
 })
-vim.lsp.enable("sourcekit")
+--vim.lsp.enable("sourcekit")
 
 vim.lsp.config("zls", {
 	cmd = { "zls" },
 	filetypes = { "zig", "zir" },
-	root_markers = { "build.zig", ".git" },
+	root_markers = { "build.zig" },
 	single_file_support = true,
 	capabilities = default_capabilities,
 	settings = {
 		zls = {
-			zig_exe_path = "/opt/homebrew/bin/zig",
+			--zig_exe_path = "/opt/homebrew/bin/zig",
 			warn_style = true,
 			highlight_global_var_declarations = true,
 			build_on_save = true,
+			enable_build_on_save = true,
+			enable_autofix = true,
+			record_session = true,
+			enable_snippets = true,
 		},
 	},
 })
